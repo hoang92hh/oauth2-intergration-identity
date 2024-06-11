@@ -13,3 +13,17 @@ B3. In Service , call to API Google to get the parameters( include accestoken)
     + Thiet lap cac property of object (google) to  my instance 
 
 B4. Return accestoken to web-app , and save LocalStore to used.
+
+
+# Onboard User
+B1. Trong qua trinh outboundAuthenticate, ngay sau khi gui exchangeToken, Ta se lay token do
+
+B2. Dua vao token, ta tiep tuc goi API cua google, de lay userInfo tu phia google.
+    + Khai bao 1 OutboundUserClient de thuc hien call sang google
+    + Cac thuoc tinh khai bao cho respone duoc thiet lap theo doi tuong json duoc tra ve tu phia API
+    
+
+B3. Kiem tra user da ton tai trong database cua he thong hien tai
+Neu chua co se insert vao, con neu co roi se khong lam gi ca
+    + map cac truong can thiet de thuc hien viec insert
+
