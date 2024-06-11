@@ -8,11 +8,19 @@ spring:
     url: "jdbc:mysql://localhost:3306/identity_service"
     driverClassName: "com.mysql.cj.jdbc.Driver"
     username: root
-    password: root
+    password: sql@2024
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
+
+#declared the parameters of google api999489656347-f9uos6jfnkh54qh51pgd1266k17cpltf.apps.googleusercontent.com
+outbound:
+  identity:
+    client-id: ${CLIENT_ID:}
+    client-secret: ${CLIENT_SECRET:}
+    redirect-uri: "http://localhost:3000/authenticate"
+
 
 jwt:
   signerKey: "1TjXchw5FloESb63Kc+DFhTARvpWL4jUGCwfGWxuG5SIf/1y/LgJxHnMqaF6A/ij"
