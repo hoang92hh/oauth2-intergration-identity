@@ -74,7 +74,7 @@ export default function Home() {
                 alt={`${userDetails.given_name}'s profile`}
                 className="profile-pic"
               />
-              <p>Welcome back to Devteria,</p>
+              <p>Welcome back to Hoang Application,{userDetails.username}</p>
               <h1 className="name">{userDetails.name}</h1>
               <p className="email">{userDetails.email}</p>{" "}
             </Box>

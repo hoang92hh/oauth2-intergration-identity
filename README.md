@@ -30,9 +30,18 @@ Neu chua co se insert vao, con neu co roi se khong lam gi ca
 
  # Get infor of user from current Application, not Google
 
- B1. Khi nhan button login with username, password, web-app se thuc hien call to api "getToken" cua identity service
+ B1. Khi nhan button login with username, password, web-app se thuc hien call to api "getToken" cua identity service.
+ B1.2 Trong truong hop xac thuc bang Google,  Sau khi Onboard User tao se su dung user nay lam tham so de get token tu identity.
+    Voi phuong thuc var token = generateToke(user).
+    Tra token cua identiy cho phia FE.
 
  B2. Voi response phan hoi tu phia service, ta lay ra token va luu xuong LocalStore.
 
  B3. Dieu huong trang login ve trang "Home"
+
+ *Nhu vay la token cua google chi dong vai tro cho ta lay user infomation trong google
+ *Phia FE chi luu gia tri "Code" , voi moi nghiep vu lien quan den google se gui ma "Code" de lay google token va thuc hien cac API khac lien quan den google
+ *Ta se van lam viec voi he thong cua Application voi identiy token.
+ *Tranh truong hop call google token qua nhieu, viec su dung bean cho mot lop static de luu tru trong sever java la 1 giai phap
+
 

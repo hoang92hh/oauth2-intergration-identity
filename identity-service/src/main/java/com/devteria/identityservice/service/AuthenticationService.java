@@ -231,6 +231,11 @@ public class AuthenticationService {
                         .build())
         );
 
-        return AuthenticationResponse.builder().token(response.getAccessToken()).build();
+        // Generate token
+        var token = generateToken(user);
+
+        return AuthenticationResponse.builder()
+                .token(token)
+                .build();
     }
 }
