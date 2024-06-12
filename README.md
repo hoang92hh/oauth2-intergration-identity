@@ -27,3 +27,12 @@ B3. Kiem tra user da ton tai trong database cua he thong hien tai
 Neu chua co se insert vao, con neu co roi se khong lam gi ca
     + map cac truong can thiet de thuc hien viec insert
 
+
+ # Get infor of user from current Application, not Google
+
+ B1. Khi nhan button login with username, password, web-app se thuc hien call to api "getToken" cua identity service
+
+ B2. Voi response phan hoi tu phia service, ta lay ra token va luu xuong LocalStore.
+
+ B3. Dieu huong trang login ve trang "Home"
+

@@ -9,15 +9,27 @@ export default function Home() {
   const [userDetails, setUserDetails] = useState({});
 
   const getUserDetails = async (accessToken) => {
+    // const response = await fetch(
+    //   `https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=${accessToken}`
+    // );
+
     const response = await fetch(
-      `https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=${accessToken}`
+      "http://localhost:8080/identity/users/my-info",
+      {
+        method: "GET",
+        header: {
+          Authorization: `Bear ${accessToken}`
+        },
+      }
     );
+
     const data = await response.json();
-    console.log(data);
-    
-    setUserDetails(data);
+
+    console.log(data.result);    
+    setUserDetails(data.result);
   };
 
+  // Phan chay kiem tra khi load page
   useEffect(() => {
     const accessToken = getToken();
 
