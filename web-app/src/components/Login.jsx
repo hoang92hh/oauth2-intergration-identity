@@ -1,10 +1,12 @@
 import {
+  Alert,
   Box,
   Button,
   Card,
   CardActions,
   CardContent,
   Divider,
+  Snackbar,
   TextField,
   Typography,
 } from "@mui/material";
@@ -42,6 +44,30 @@ export default function Login() {
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [snackBarOpen, setSnackBarOpen] = useState(false);
+  const [snackBarMessage, setSnackBarMessage] = useState("");
+  const [snackType, setSnackType] = useState("error");
+
+  const handleCloseSnackBar = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setSnackBarOpen(false);
+  };
+
+  const showError = (message) => {
+    setSnackType("error");
+    setSnackBarMessage(message);
+    setSnackBarOpen(true);
+  };
+
+  const showSuccess = (message) => {
+    setSnackType("success");
+    setSnackBarMessage(message);
+    setSnackBarOpen(true);
+  };
+
 
   const handleLogin = (event) => {
     event.preventDefault();    
@@ -63,14 +89,32 @@ export default function Login() {
       })
       .then((data) => {
         console.log(data);
-
+        if (data.code !== 1000) throw new Error(data.message);
         setToken(data.result?.token);
         navigate("/");
+      })
+      .catch((error) => {
+        showError(error.message);  
       });
   };
 
   return (
     <>
+      <Snackbar
+        open={snackBarOpen}
+        onClose={handleCloseSnackBar}
+        autoHideDuration={6000}
+        anchorOrigin={{ vertical: "top", horizontal: "right" }}
+      >
+        <Alert
+          onClose={handleCloseSnackBar}
+          severity={snackType}
+          variant="filled"
+          sx={{ width: "100%" }}
+        >
+          {snackBarMessage}
+        </Alert>
+      </Snackbar>
       <Box
         display="flex"
         flexDirection="column"
