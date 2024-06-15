@@ -89,12 +89,14 @@ export default function Login() {
       })
       .then((data) => {
         console.log(data);
+
         if (data.code !== 1000) throw new Error(data.message);
+
         setToken(data.result?.token);
         navigate("/");
       })
       .catch((error) => {
-        showError(error.message);  
+        showError(error.message);
       });
   };
 
@@ -134,9 +136,9 @@ export default function Login() {
         >
           <CardContent>
             <Typography variant="h5" component="h1" gutterBottom>
-              Welcome to Devtetia
+              Welcome to Hoang Application: 
             </Typography>
-            <Box component="form" onSubmit={handleSubmit} sx={{ mt: 2 }}>
+            <Box component="form" onSubmit={handleLogin} sx={{ mt: 2 }}>
               <TextField
                 label="Username"
                 variant="outlined"
@@ -163,6 +165,7 @@ export default function Login() {
                 variant="contained"
                 color="primary"
                 size="large"
+                onClick={handleLogin}
                 fullWidth
               >
                 Login
@@ -172,7 +175,7 @@ export default function Login() {
                 variant="contained"
                 color="secondary"
                 size="large"
-                onClick={handleClick}
+                onClick={handleContinueWithGoogle}
                 fullWidth
                 sx={{ gap: "10px" }}
               >

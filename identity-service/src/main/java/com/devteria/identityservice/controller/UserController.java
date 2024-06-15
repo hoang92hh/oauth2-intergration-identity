@@ -2,6 +2,7 @@ package com.devteria.identityservice.controller;
 
 import java.util.List;
 
+import com.devteria.identityservice.dto.request.PasswordCreationRequest;
 import jakarta.validation.Valid;
 
 import org.springframework.web.bind.annotation.*;
@@ -63,6 +64,14 @@ public class UserController {
     ApiResponse<UserResponse> updateUser(@PathVariable String userId, @RequestBody UserUpdateRequest request) {
         return ApiResponse.<UserResponse>builder()
                 .result(userService.updateUser(userId, request))
+                .build();
+    }
+
+    @PostMapping("/create-password")
+    ApiResponse<Void> createPassword(@RequestBody @Valid PasswordCreationRequest request) {
+        userService.createPassword(request);
+        return ApiResponse.<Void>builder()
+                .message("Password has been created, you could use it to log-in")
                 .build();
     }
 }
